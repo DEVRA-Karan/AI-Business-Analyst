@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Business Analyst</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<h1>AI Business Analyst Dashboard</h1>
+
+<form method="POST" action="/upload" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button type="submit">Upload CSV</button>
+</form>
+
+<a href="/download-pdf">
+    <button>Download PDF Report</button>
+</a>
+
+<div class="cards">
+
+    <div class="card">
+        <h2>Total Revenue</h2>
+        <p>{{ revenue }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Average Profit</h2>
+        <p>{{ profit }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Top Category</h2>
+        <p>{{ category }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Top Region</h2>
+        <p>{{ region }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Total Orders</h2>
+        <p>{{ orders }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Total Customers</h2>
+        <p>{{ customers }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Best Payment Method</h2>
+        <p>{{ payment }}</p>
+    </div>
+
+</div>
+
+<hr>
+
+<h2>Top 5 Categories</h2>
+
+<table border="1">
+    <tr>
+        <th>Category</th>
+        <th>Revenue</th>
+    </tr>
+
+    {% for category, revenue in top_categories.items() %}
+    <tr>
+        <td>{{ category }}</td>
+        <td>{{ revenue }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+
+<h2>AI Insights</h2>
+
+<ul>
+    {% for insight in insights %}
+    <li>{{ insight }}</li>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<h2>Ask AI</h2>
+
+<form method="POST" action="/ask">
+    <input type="text" name="question" placeholder="Ask a business question">
+    <button type="submit">Ask</button>
+</form>
+
+{% if answer %}
+<p><strong>Answer:</strong> {{ answer }}</p>
+{% endif %}
+
+<hr>
+
+<h2>Interactive Revenue Chart</h2>
+
+{{ plotly_chart|safe }}
+
+<h2>Revenue by Category</h2>
+<img src="{{ url_for('static', filename='revenue_chart.png') }}" width="800">
+
+<h2>Revenue by Region</h2>
+<img src="{{ url_for('static', filename='region_chart.png') }}" width="800">
+
+</body>
+</html>
