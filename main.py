@@ -23,7 +23,7 @@ from charts import save_revenue_chart, save_region_chart
 
 app = Flask(__name__)
 
-genai.configure(api_key="AQ.Ab8RN6LXB2XjqxVQI9XDmdU6a81fU8TRHJj_HduBRBsaeVWJAg")
+genai.configure(api_key="YOUR_API_KEY")
 
 model = genai.GenerativeModel("gemini-2.5-flash")
 
