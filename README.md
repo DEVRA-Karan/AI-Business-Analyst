@@ -1,4 +1,4 @@
-<img width="700" height="971" alt="Screenshot 2026-06-13 120334" src="https://github.com/user-attachments/assets/cbed4d72-9af8-49da-9e4e-7d4a41088604" /># 📊 AI Business Analyst
+# 📊 AI Business Analyst
 
 An AI-powered Business Analytics Dashboard that transforms raw sales data into actionable business insights using Python, Flask, Plotly, and Google Gemini AI.
 
